@@ -1,14 +1,14 @@
 import flet as ft
 
 
-class View(ft.UserControl):
+class View():
     def __init__(self, page: ft.Page):
         super().__init__()
         # page stuff
         self._page = page
-        self._page.title = "Template application using MVC and DAO"
+        self._page.title = "TdP Lab09"
         self._page.horizontal_alignment = 'CENTER'
-        self._page.theme_mode = ft.ThemeMode.DARK
+        self._page.theme_mode = ft.ThemeMode.LIGHT
         # controller (it is not initialized. Must be initialized in the main, after the controller is created)
         self._controller = None
         # graphical elements
@@ -20,19 +20,18 @@ class View(ft.UserControl):
 
     def load_interface(self):
         # title
-        self._title = ft.Text("Hello World", color="blue", size=24)
+        self._title = ft.Text("Flights Manager", color="blue", size=24)
         self._page.controls.append(self._title)
 
         #ROW with some controls
         # text field for the name
         self.txt_name = ft.TextField(
-            label="name",
-            width=200,
-            hint_text="Insert a your name"
+            label="Distanza minima",
+            width=350
         )
 
         # button for the "hello" reply
-        self.btn_hello = ft.ElevatedButton(text="Hello", on_click=self._controller.handle_hello)
+        self.btn_hello = ft.ElevatedButton(text="Analizza Aeroporti", on_click=self._controller.handleAnalizza)
         row1 = ft.Row([self.txt_name, self.btn_hello],
                       alignment=ft.MainAxisAlignment.CENTER)
         self._page.controls.append(row1)
